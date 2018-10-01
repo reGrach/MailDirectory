@@ -90,17 +90,19 @@ namespace MailDirectory.ViewModel
             CatalogueBD.Letters.Add(new Letter
             {
                 Date = inputDateTime,
-                Subject = InputSubject,
+                Subject = inputSubject,
                 TextMessage = inputMessage,
                 SenderId = FoundEmployee(selectedSender, CatalogueBD.Employees).First().Id,
                 RecipientId = FoundEmployee(selectedRecipient, CatalogueBD.Employees).First().Id
             });
             CatalogueBD.SaveChanges();
         }
+
+        //Метод для поиска сотрудника в БД
         private IQueryable<Employee> FoundEmployee(ModelEmployee sel, DbSet<Employee> employees)
         {
             var found = from emp in employees
-                        where emp.FirstName == sel.FirstName && emp.SecondName == sel.SecondName
+                        where emp.SecondName == sel.SecondName && emp.FirstName == sel.FirstName
                         select emp;
             return found;
         }

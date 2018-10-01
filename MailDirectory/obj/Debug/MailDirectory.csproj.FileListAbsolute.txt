@@ -1,4 +1,3 @@
-G:\Softwares\MailDirectory\MailDirectory\obj\Debug\MailDirectory.csprojAssemblyReference.cache
 G:\Softwares\MailDirectory\MailDirectory\obj\Debug\App.g.cs
 G:\Softwares\MailDirectory\MailDirectory\obj\Debug\MailDirectory_MarkupCompile.cache
 G:\Softwares\MailDirectory\MailDirectory\obj\Debug\MailDirectory_MarkupCompile.lref

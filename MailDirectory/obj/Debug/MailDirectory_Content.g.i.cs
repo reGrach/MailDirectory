@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("views/57567a418f83a4cd32526c24d86c4dc71f4e41dc.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("cataloguedb.sdf")]
 
 

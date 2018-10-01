@@ -46,7 +46,7 @@ namespace MailDirectory.ViewModel
                 return removeLetter ??
                     (removeLetter = new RelayCommand(obj =>
                     {
-                        if (MessageBox.Show(
+                        if (selectedLetter != null && MessageBox.Show(
                             "Вы уверены, что хотите удалить писмо?",
                             "Удаление письма",
                             MessageBoxButton.YesNo,
@@ -111,17 +111,9 @@ namespace MailDirectory.ViewModel
             OpenPageAddLetterCommand = new RelayCommand<INotifyPropertyChanged>(OpenPageAddLetterCommandExecute);
             OpenPageAddEmployeeCommand = new RelayCommand<INotifyPropertyChanged>(OpenPageAddEmployeeCommandExecute);
             //наполняем DG при инициализации
-            DataGridUpdate();
-        }
-        #endregion
-
-        #region private methods
-        //Обновление DataGrid данными из БД
-        private void DataGridUpdate()
-        {
             CatalogueBD = new CatalogueDBContext();
             Letters = new ObservableCollection<ModelLetter>();
-            foreach (Letter let in CatalogueBD.Letters.Include(x => x.Sender).ToList())
+            foreach (Letter let in CatalogueBD.Letters.Include(x => x.Recipient).Include(y => y.Sender).ToList())
             {
                 Letters.Add(new ModelLetter()
                 {
@@ -133,6 +125,9 @@ namespace MailDirectory.ViewModel
                 });
             }
         }
+        #endregion
+
+        #region private methods
         //Удаление письма из БД
         private void DelLetter4DB()
         {
